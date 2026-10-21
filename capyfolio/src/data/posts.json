@@ -1,0 +1,61 @@
+[
+  {
+    "id": "post1",
+    "authorId": "u1",
+    "authorName": "Gabriel Costa",
+    "authorRole": "Ciência da Computação • Pesquisador IC",
+    "authorInstitution": "UFF",
+    "authorAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80",
+    "isOrganization": false,
+    "category": "Dados e Análise",
+    "timestamp": "Há 3 horas",
+    "content": "Acabamos de atualizar os mapas de interpolação espacial e o repositório do nosso projeto 'Análise espacial da qualidade do ar no Rio de Janeiro usando dados abertos', desenvolvido em parceria com a Mariana Alves na UFF! Consolidamos os dados das estações de monitoramento com GeoPandas e PostgreSQL para identificar as zonas críticas de concentração de poluentes. Feedbacks de colegas da área ambiental e de dados são muito bem-vindos!",
+    "relatedProjectId": "p1",
+    "relatedEventId": null,
+    "likes": 54,
+    "likedByMe": false,
+    "comments": [
+      {
+        "id": "c1",
+        "authorName": "Ana Clara Souza",
+        "authorInstitution": "UFRJ",
+        "text": "Excelente trabalho, Gabriel e Mariana! A visualização espacial ficou super clara e muito bem documentada.",
+        "timestamp": "Há 1 hora"
+      }
+    ]
+  },
+  {
+    "id": "post2",
+    "authorId": "org1",
+    "authorName": "Instituto de Computação — UFF",
+    "authorRole": "Comissão Organizadora",
+    "authorInstitution": "Universidade Federal Fluminense",
+    "authorAvatar": "https://images.unsplash.com/photo-1562774053-701939374585?w=300&auto=format&fit=crop&q=80",
+    "isOrganization": true,
+    "category": "Palestra Oficial",
+    "timestamp": "Há 6 horas",
+    "content": "Estão abertas as inscrições para a palestra 'RAG e LLMs: aplicações e desafios na pesquisa acadêmica', que acontecerá no Auditório do Instituto de Computação da UFF em Niterói. Contaremos com a presença da pesquisadora Ana Clara Souza (UFRJ) e do Prof. Lucas Martins (UFF). Inscreva-se diretamente pela página do evento aqui no CapyFolio!",
+    "relatedProjectId": null,
+    "relatedEventId": "e1",
+    "likes": 92,
+    "likedByMe": true,
+    "comments": []
+  },
+  {
+    "id": "post3",
+    "authorId": "u4",
+    "authorName": "Tiago Mendes",
+    "authorRole": "Ciência de Dados e IA • 5º Período",
+    "authorInstitution": "Ibmec Rio",
+    "authorAvatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80",
+    "isOrganization": false,
+    "category": "Visão Computacional",
+    "timestamp": "Ontem",
+    "content": "Compartilhando os resultados mais recentes do projeto CapyVision! Conseguimos atingir 120 FPS constantes no rastreamento tático de robôs autônomos combinando C++, Python e filtros de Kalman. A documentação técnica completa já está disponível no meu portfólio.",
+    "relatedProjectId": "p3",
+    "relatedEventId": null,
+    "likes": 41,
+    "likedByMe": false,
+    "comments": []
+  }
+]

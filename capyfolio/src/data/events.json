@@ -1,0 +1,113 @@
+[
+  {
+    "id": "e1",
+    "title": "RAG e LLMs: aplicações e desafios na pesquisa acadêmica",
+    "category": "Palestra",
+    "status": "Inscrições abertas",
+    "date": "15 mai. 2025, 14:00 - 18:00",
+    "location": "Auditório do Instituto de Computação - UFF",
+    "city": "Niterói, RJ",
+    "organizer": "Universidade Federal Fluminense (UFF)",
+    "modality": "Presencial",
+    "tags": [
+      "IA Generativa",
+      "LLMs",
+      "RAG",
+      "Pesquisa Acadêmica"
+    ],
+    "shortDescription": "Palestra com especialistas da área de IA sobre o uso de Retrieval-Augmented Generation (RAG) e grandes modelos de linguagem (LLMs) em projetos acadêmicos, com foco em aplicações práticas, limitações e boas práticas.",
+    "aboutText": "O evento contará com palestras, demonstrações práticas e um espaço para dúvidas e networking. Será uma excelente oportunidade para estudantes e pesquisadores aprimorarem seus conhecimentos e conhecerem as últimas tendências da área, compreendendo como estruturar pipelines reprodutíveis, avaliar alucinações com rigor estatístico e publicar pesquisas sólidas no ecossistema brasileiro.",
+    "speakers": [
+      {
+        "id": "sp1",
+        "name": "Ana Clara Souza",
+        "role": "Pesquisadora - UFRJ",
+        "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&auto=format&fit=crop&q=80",
+        "topic": "Arquiteturas de Recuperação Densa e Avaliação de Factualidade em Português"
+      },
+      {
+        "id": "sp2",
+        "name": "Lucas Martins",
+        "role": "Professor - UFF",
+        "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&auto=format&fit=crop&q=80",
+        "topic": "Ética, Reprodutibilidade Científica e LLMs Abertos na Universidade"
+      }
+    ],
+    "schedule": [
+      {
+        "time": "14:00 - 14:30",
+        "title": "Credenciamento Acadêmico e Abertura Institucional",
+        "speaker": "Coordenação do Instituto de Computação (IC/UFF)"
+      },
+      {
+        "time": "14:30 - 15:45",
+        "title": "Palestra Técnica: RAG na Prática — Indexação Semântica e Mitigação de Alucinações",
+        "speaker": "Ana Clara Souza (Pesquisadora - UFRJ)"
+      },
+      {
+        "time": "15:45 - 17:00",
+        "title": "Palestra & Demo: Desafios Metodológicos de LLMs na Pesquisa Universitária",
+        "speaker": "Prof. Dr. Lucas Martins (UFF)"
+      },
+      {
+        "time": "17:00 - 18:00",
+        "title": "Mesa de Perguntas, Café Acadêmico e Networking entre Estudantes",
+        "speaker": "Aberto a todos os inscritos (Certificado de 4h AAC)"
+      }
+    ],
+    "attendeesCount": 148
+  },
+  {
+    "id": "e2",
+    "title": "Simpósio Fluminense de Ciência de Dados Espaciais e Cidades Resilientes",
+    "category": "Simpósio",
+    "status": "Inscrições abertas",
+    "date": "22 jun. 2025, 09:00 - 17:00",
+    "location": "Auditório Central COPPE - UFRJ",
+    "city": "Rio de Janeiro, RJ",
+    "organizer": "UFRJ & UFF",
+    "modality": "Presencial e Híbrido",
+    "tags": [
+      "Dados e Análise",
+      "GeoPandas",
+      "Python",
+      "Rio de Janeiro"
+    ],
+    "shortDescription": "Encontro interuniversitário dedicado à apresentação de projetos de Iniciação Científica e extensão que utilizam dados geoespaciais abertos para monitoramento climático e urbano.",
+    "aboutText": "O simpósio reúne estudantes de graduação, pós-graduação e gestores públicos para debater o uso de ferramentas abertas (QGIS, GeoPandas, PostGIS e imagens de satélite CBERS-4A) na prevenção de desastres naturais e melhoria da qualidade ambiental nas cidades brasileiras.",
+    "speakers": [
+      {
+        "id": "sp3",
+        "name": "Gabriel Costa",
+        "role": "Pesquisador IC - UFF",
+        "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80",
+        "topic": "Mapeamento Espacial da Qualidade do Ar no Rio de Janeiro"
+      },
+      {
+        "id": "sp4",
+        "name": "Profa. Helena Vasconcelos",
+        "role": "Docente - UFRJ",
+        "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80",
+        "topic": "Sensoriamento Remoto e Políticas Públicas Baseadas em Evidências"
+      }
+    ],
+    "schedule": [
+      {
+        "time": "09:00 - 10:30",
+        "title": "Painel de Abertura: Dados Abertos Ambientais no Estado do Rio de Janeiro",
+        "speaker": "Profa. Helena Vasconcelos (UFRJ)"
+      },
+      {
+        "time": "11:00 - 12:30",
+        "title": "Mostra de Portfólios Estudantis CapyFolio",
+        "speaker": "Apresentação Oral de Trabalhos"
+      },
+      {
+        "time": "14:00 - 17:00",
+        "title": "Oficina Prática: GeoPandas e PostGIS para Análise Urbana",
+        "speaker": "Laboratório de Geoprocessamento UFF"
+      }
+    ],
+    "attendeesCount": 210
+  }
+]

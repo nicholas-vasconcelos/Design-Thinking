@@ -1,0 +1,258 @@
+[
+  {
+    "id": "p1",
+    "title": "Análise espacial da qualidade do ar no Rio de Janeiro usando dados abertos",
+    "shortDescription": "O projeto utiliza dados de estações de monitoramento e técnicas de geoprocessamento para identificar padrões de poluição na cidade.",
+    "summary": "Este projeto analisa a qualidade do ar na cidade do Rio de Janeiro a partir de dados abertos de estações de monitoramento, combinando técnicas de geoprocessamento e visualização espacial. O objetivo é identificar padrões de poluição, avaliar a influência de fatores urbanos e ambientais, e fornecer insumos para políticas públicas de monitoramento e mitigação.",
+    "keyResults": [
+      "Mapeamento da distribuição de poluentes na cidade.",
+      "Identificação de áreas críticas de maior concentração.",
+      "Análise temporal das variações de qualidade do ar."
+    ],
+    "methodology": "A metodologia foi estruturada em quatro etapas: (1) Coleta automatizada via API das séries históricas horárias das estações do programa MonitorAr-Rio e dados meteorológicos do INMET; (2) Limpeza, tratamento de falhas e padronização estatística em Python (Pandas/NumPy); (3) Interpolação espacial pelo método IDW (Inverse Distance Weighting) e Krigagem Ordinária utilizando GeoPandas e PostGIS; (4) Cruzamento com malhas viárias e cobertura vegetal para modelagem de regressão espacial.",
+    "files": [
+      {
+        "name": "relatorio_parcial_pibic_uff_2025.pdf",
+        "size": "2.4 MB",
+        "type": "Artigo / Relatório PDF"
+      },
+      {
+        "name": "pipeline_geopandas_monitorar_rio.ipynb",
+        "size": "840 KB",
+        "type": "Jupyter Notebook"
+      },
+      {
+        "name": "malha_estacoes_rj_postgis.geojson",
+        "size": "4.1 MB",
+        "type": "Dataset GeoJSON"
+      }
+    ],
+    "authorIds": [
+      "u1",
+      "u2"
+    ],
+    "authorNames": "Gabriel Costa, Mariana Alves",
+    "institution": "Universidade Federal Fluminense (UFF)",
+    "area": "Dados e Análise",
+    "type": "Projeto de pesquisa",
+    "status": "Em andamento",
+    "date": "28 abr. 2025",
+    "period": "jan. 2024 - dez. 2025",
+    "tags": [
+      "GeoPandas",
+      "PostgreSQL",
+      "Python",
+      "Rio de Janeiro"
+    ],
+    "url": "https://github.com/capyfolio-demo/qualidade-ar-rio-geopandas",
+    "visualType": "spatial-map",
+    "media": "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=1000&auto=format&fit=crop&q=80",
+    "favorites": 42
+  },
+  {
+    "id": "p2",
+    "title": "Arquitetura RAG Auditável para Consulta em Acervos de Teses e Dissertações Brasileiras",
+    "shortDescription": "Pipeline de Recuperação Aumentada por Geração (RAG) com citação direta de parágrafos e mitigação de alucinações em artigos científicos em português.",
+    "summary": "Este trabalho propõe um indexador semântico denso e esparso (busca híbrida BM25 + embeddings multilíngues) projetado especificamente para bibliotecas digitais universitárias brasileiras. O sistema permite que pesquisadores realizem perguntas complexas e recebam respostas fundamentadas exclusivamente nos trechos recuperados, acompanhadas de referências ABNT automatizadas.",
+    "keyResults": [
+      "Redução de 78% na taxa de alucinação factual em comparação ao uso de LLMs sem recuperação contextual.",
+      "Indexação vetorial de mais de 12.500 dissertações e artigos em língua portuguesa.",
+      "Interface de avaliação aberta para validação por docentes e bibliotecários."
+    ],
+    "methodology": "Utilizamos segmentação semântica sensível à estrutura de artigos acadêmicos (Resumo, Metodologia, Resultados e Referências), armazenamento vetorial no PostgreSQL via pgvector e re-ranking cruzado antes da etapa de geração.",
+    "files": [
+      {
+        "name": "arquitetura_rag_academico_ufrj.pdf",
+        "size": "1.9 MB",
+        "type": "Artigo Técnico PDF"
+      },
+      {
+        "name": "benchmark_alucinacoes_ptbr.csv",
+        "size": "620 KB",
+        "type": "Resultados CSV"
+      }
+    ],
+    "authorIds": [
+      "u3",
+      "u1"
+    ],
+    "authorNames": "Ana Clara Souza, Gabriel Costa",
+    "institution": "Universidade Federal do Rio de Janeiro (UFRJ)",
+    "area": "Inteligência Artificial",
+    "type": "Iniciação Científica",
+    "status": "Em andamento",
+    "date": "10 mai. 2025",
+    "period": "mar. 2024 - dez. 2025",
+    "tags": [
+      "IA Generativa",
+      "LLMs",
+      "RAG",
+      "Python",
+      "PostgreSQL"
+    ],
+    "url": "https://github.com/capyfolio-demo/rag-acervos-academicos",
+    "visualType": "ai-network",
+    "media": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1000&auto=format&fit=crop&q=80",
+    "favorites": 68
+  },
+  {
+    "id": "p3",
+    "title": "CapyVision: Rastreamento Tático de Baixa Latência para Futebol de Robôs Autônomos",
+    "shortDescription": "Sistema em Python e C++ para calibração óptica, detecção cromática e predição de trajetória de robôs móveis a 120 quadros por segundo.",
+    "summary": "Desenvolvimento de um motor de visão computacional de alto desempenho para equipes universitárias de robótica autônoma. O projeto combina filtros de Kalman Estendidos (EKF) com um painel de telemetria em React para diagnóstico em tempo real durante partidas oficiais.",
+    "keyResults": [
+      "Redução do tempo de inferência visual de 14.2ms para 3.8ms por quadro.",
+      "Estabilidade de rastreamento superior a 99% sob variações de iluminação.",
+      "Painel web interativo com reprodução de jogadas e mapas de calor."
+    ],
+    "methodology": "Captura via câmera global industrial, segmentação em espaço de cor HSV calibrado por algoritmos genéticos e filtragem estocástica para compensação do atraso de rádio.",
+    "files": [
+      {
+        "name": "artigo_sbrt_capyvision.pdf",
+        "size": "3.1 MB",
+        "type": "Artigo PDF"
+      }
+    ],
+    "authorIds": [
+      "u4"
+    ],
+    "authorNames": "Tiago Mendes",
+    "institution": "Ibmec Rio",
+    "area": "Visão Computacional",
+    "type": "Projeto de Engenharia",
+    "status": "Concluído",
+    "date": "19 abr. 2025",
+    "period": "ago. 2024 - jul. 2025",
+    "tags": [
+      "Visão Computacional",
+      "Python",
+      "C++",
+      "React"
+    ],
+    "url": "https://github.com/capyfolio-demo/capyvision",
+    "visualType": "standard",
+    "media": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1000&auto=format&fit=crop&q=80",
+    "favorites": 35
+  },
+  {
+    "id": "p4",
+    "title": "SabiáEdu: Plataforma Aberta de Apoio à Revisão Estrutural de Textos Acadêmicos",
+    "shortDescription": "Ambiente colaborativo web para orientação de escrita científica e revisão por pares entre estudantes de graduação.",
+    "summary": "Plataforma desenvolvida para auxiliar estudantes de primeira metade da graduação na estruturação de relatórios de pesquisa, resumos expandidos e artigos científicos, conectando veteranos e monitores em rodadas estruturadas de revisão.",
+    "keyResults": [
+      "Adotado por 6 ligas acadêmicas e grupos PET no Rio de Janeiro.",
+      "Mais de 420 resumos revisados colaborativamente no último semestre."
+    ],
+    "methodology": "Arquitetura fullstack baseada em React, TypeScript, Node.js e PostgreSQL com foco em acessibilidade web (WCAG AA).",
+    "files": [
+      {
+        "name": "documentacao_arquitetura_sabiaedu.pdf",
+        "size": "1.5 MB",
+        "type": "Documentação PDF"
+      }
+    ],
+    "authorIds": [
+      "u5",
+      "u4"
+    ],
+    "authorNames": "Rafael Oliveira, Tiago Mendes",
+    "institution": "PUC-Rio & Ibmec Rio",
+    "area": "Engenharia de Software",
+    "type": "Projeto de Extensão",
+    "status": "Em andamento",
+    "date": "02 mai. 2025",
+    "period": "fev. 2025 - dez. 2025",
+    "tags": [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL"
+    ],
+    "url": "https://github.com/capyfolio-demo/sabia-edu",
+    "visualType": "standard",
+    "media": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1000&auto=format&fit=crop&q=80",
+    "favorites": 29
+  },
+  {
+    "id": "p5",
+    "title": "BioDock-BR: Triagem Virtual de Moléculas da Biodiversidade Brasileira com Graph Neural Networks",
+    "shortDescription": "Modelos de aprendizado profundo geométrico aplicados à predição de afinidade molecular em bancos de dados de produtos naturais.",
+    "summary": "Investigação científica que aplica Redes Neurais em Grafos (GNNs) sobre estruturas moleculares catalogadas no NuBBE Database, acelerando a identificação de candidatos promissores contra alvos proteicos de doenças tropicais negligenciadas.",
+    "keyResults": [
+      "Triagem computacional de 54.000 compostos naturais em menos de 4 horas.",
+      "Validação cruzada com ferramentas clássicas de docking molecular."
+    ],
+    "methodology": "Representação de ligações atômicas como grafos direcionados e treinamento supervisionado em PyTorch Geometric.",
+    "files": [
+      {
+        "name": "poster_simposio_bioinformatica_usp.pdf",
+        "size": "2.8 MB",
+        "type": "Pôster Científico PDF"
+      }
+    ],
+    "authorIds": [
+      "u6"
+    ],
+    "authorNames": "Beatriz Vasconcelos",
+    "institution": "Universidade de São Paulo (USP)",
+    "area": "Bioinformática",
+    "type": "Projeto de pesquisa",
+    "status": "Em andamento",
+    "date": "14 abr. 2025",
+    "period": "jan. 2024 - nov. 2025",
+    "tags": [
+      "Bioinformática",
+      "Python",
+      "PyTorch",
+      "Pesquisa Acadêmica"
+    ],
+    "url": "https://github.com/capyfolio-demo/biodock-br",
+    "visualType": "standard",
+    "media": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1000&auto=format&fit=crop&q=80",
+    "favorites": 51
+  },
+  {
+    "id": "p_arthur_1",
+    "title": "Plataforma de Otimização de Processos Tech com LLMs",
+    "shortDescription": "Projeto prático desenvolvido para automação de fluxos acadêmicos utilizando Modelos de Linguagem, garantindo validação técnica, código aberto no GitHub e documentação rigorosa.",
+    "summary": "Projeto prático desenvolvido para automatizar e otimizar processos acadêmicos e internos de tecnologia, com foco em produtividade, documentação e tomada de decisão baseada em dados. O sistema integra IA generativa para reduzir retrabalho, organizar fluxos de tarefas e entregar entregáveis com mais velocidade e qualidade.",
+    "keyResults": [
+      "Redução de 40% no tempo de processamento de dados acadêmicos.",
+      "Arquitetura modular em React e microsserviços Python.",
+      "Repositório público com documentação completa e testes unitários."
+    ],
+    "methodology": "A solução foi estruturada em frontend em React com TypeScript, backend em Node.js/Python para orquestração de fluxos e uso de LLMs para classificação e geração de insights. A implementação revisa processos acadêmicos em etapas, com testes, automação e documentação para facilitar manutenção e escalabilidade.",
+    "files": [
+      {
+        "name": "arquitetura_llm_automacao.pdf",
+        "size": "1.8 MB",
+        "type": "Relatório PDF"
+      },
+      {
+        "name": "backend_processos_llm.zip",
+        "size": "2.6 MB",
+        "type": "Código Backend"
+      }
+    ],
+    "authorIds": [
+      "u_arthur"
+    ],
+    "authorNames": "Arthur",
+    "institution": "Ibmec Rio",
+    "area": "Fullstack & IA",
+    "type": "Projeto Prático",
+    "status": "Concluído",
+    "date": "15 dez. 2025",
+    "period": "ago. 2025 - dez. 2025",
+    "tags": [
+      "Python",
+      "LLMs",
+      "React",
+      "Docker"
+    ],
+    "url": "https://github.com/arthur/otimizacao-llm",
+    "visualType": "standard",
+    "media": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1000&auto=format&fit=crop&q=80",
+    "favorites": 27
+  }
+]
