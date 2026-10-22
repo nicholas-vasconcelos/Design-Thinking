@@ -15,13 +15,13 @@ export function ProjectCard({ project, author, isFavorited, onToggleFavorite }: 
   );
 
   return (
-    <article className="bg-white border border-[#DDE2E6] rounded-2xl overflow-hidden shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+    <article className="capy-card overflow-hidden bg-white">
       <Link to={`/projeto/${project.id}`} className="block">
         {cover}
       </Link>
       <div className="p-5 space-y-4">
         <div className="flex items-center justify-between gap-3">
-          <span className="px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] rounded-full bg-[#E8F5ED] text-[#1B8243]">{project.area}</span>
+          <span className="px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] rounded-full border-[2px] border-[#182536] bg-[#E8F5ED] text-[#1B8243] shadow-[4px_4px_0_#1B8243]">{project.area}</span>
           <button type="button" onClick={onToggleFavorite} className="inline-flex items-center gap-1.5 text-xs text-gray-500 hover:text-[#1E3C61] cursor-pointer">
             <Heart className={`w-4 h-4 ${isFavorited ? 'fill-[#1E3C61] text-[#1E3C61]' : ''}`} />
             {project.favorites ?? 0}

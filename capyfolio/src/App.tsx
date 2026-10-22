@@ -295,58 +295,129 @@ function FeedPage({ currentUser, posts, projects, events, onOpenCreateModal, onT
   onAddComment: (postId: string, text: string) => void;
 }) {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-8 space-y-8">
-      <div className="flex items-center justify-between gap-4">
-        <div>
-          <p className="text-xs uppercase tracking-[0.18em] text-[#1E3C61] font-semibold">Feed acadêmico</p>
-          <h1 className="text-3xl font-bold text-[#182536] mt-2">Bem-vindo, {currentUser.name}</h1>
+    <div className="bg-[#FAF7F2]">
+      <section className="capy-hero-shell border-b-[2px] border-[#182536] text-[#FAF7F2]">
+        <div className="max-w-6xl mx-auto px-6 py-10 md:py-14">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="space-y-2">
+              <span className="text-sm font-semibold tracking-[0.12em] uppercase text-[#FFD98A]">Feed acadêmico</span>
+              <h1 className="text-4xl md:text-6xl font-extrabold leading-[0.95] tracking-[-0.04em] text-white">Bem-vindo, {currentUser.name}</h1>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <button type="button" onClick={() => onOpenCreateModal('post')} className="capy-cta px-5 py-3 text-sm font-bold text-[#182536] bg-white shadow-[4px_4px_0_#182536] hover:shadow-[6px_6px_0_#FEA402]">
+                Nova postagem
+              </button>
+              <button type="button" onClick={() => onOpenCreateModal('project')} className="capy-cta px-5 py-3 text-sm font-bold text-[#182536] shadow-[4px_4px_0_#182536]">
+                + Publicar projeto
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="flex items-center gap-3">
-          <button type="button" onClick={() => onOpenCreateModal('post')} className="px-4 py-2 rounded-lg border border-[#CBD3DA] bg-white text-[#1E3C61] text-sm font-semibold hover:bg-gray-50 cursor-pointer">
-            Nova postagem
-          </button>
-          <button type="button" onClick={() => onOpenCreateModal('project')} className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1E3C61] text-white text-sm font-semibold hover:bg-[#162D49] cursor-pointer">
-            <Plus className="w-4 h-4" /> Publicar projeto
-          </button>
-        </div>
-      </div>
+      </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-5">
-          {posts.map((post) => (
-            <PostCard key={post.id} post={post} currentUserName={currentUser.name} onToggleLike={() => onToggleLike(post.id)} onAddComment={(text) => onAddComment(post.id, text)} />
-          ))}
-        </div>
-
-        <aside className="space-y-5">
-          <div className="bg-white border border-[#DDE2E6] rounded-2xl p-5">
-            <h3 className="text-sm font-bold text-[#1E3C61]">Projetos em destaque</h3>
-            <div className="mt-4 space-y-3">
-              {projects.slice(0, 3).map((project) => (
-                <div key={project.id} className="flex items-center gap-3 rounded-xl bg-[#FAF7F2] border border-[#DDE2E6] p-3">
-                  <img src={project.media || ''} alt={project.title} className="w-12 h-12 rounded-lg object-cover border border-[#DDE2E6]" />
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm font-semibold text-[#182536] truncate">{project.title}</p>
-                    <p className="text-[11px] text-gray-500">{project.area}</p>
+      <main className="max-w-6xl mx-auto px-6 pb-16 pt-8 md:pt-10">
+        <div className="flex flex-wrap gap-8 items-start">
+          <div className="flex-1 min-w-0 space-y-6">
+            {posts.map((post) => (
+              <article key={post.id} className="capy-panel bg-white p-6 md:p-8">
+                <div className="flex items-center gap-4">
+                  <span aria-hidden="true" className="flex h-14 w-14 items-center justify-center rounded-full border-[2px] border-[#182536] bg-[#1E3C61] text-base font-extrabold text-[#FAF7F2]">
+                    {post.authorName.split(' ').map((part) => part[0]).slice(0, 2).join('').toUpperCase()}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <strong className="block text-xl font-extrabold text-[#182536]">{post.authorName}</strong>
+                    <span className="text-sm text-[#56616D]">{post.authorRole} • {post.authorInstitution}</span>
                   </div>
+                  <span className="rounded-full border-[2px] border-[#182536] bg-[#EAF0F5] px-3 py-1 text-xs font-bold text-[#1E3C61]">
+                    {post.category}
+                  </span>
                 </div>
-              ))}
-            </div>
+
+                <p className="mt-5 text-lg leading-8 text-[#182536]">{post.content}</p>
+
+                <div className="mt-5 flex flex-wrap items-center gap-3">
+                  <button type="button" onClick={() => onToggleLike(post.id)} className="inline-flex items-center gap-2 rounded-full border-[2px] border-[#182536] bg-[#FFF4D6] px-4 py-2 text-sm font-bold text-[#182536] shadow-[4px_4px_0_#FEA402] transition hover:-translate-y-0.5">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill={post.likedByMe ? '#182536' : 'none'} stroke="#182536" strokeWidth="2" strokeLinejoin="round" aria-hidden="true"><path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11Z" /></svg>
+                    {post.likes}
+                  </button>
+                  <button type="button" className="inline-flex items-center gap-2 rounded-full border-[2px] border-[#182536] bg-white px-4 py-2 text-sm font-bold text-[#182536] shadow-[4px_4px_0_#182536] transition hover:-translate-y-0.5">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#182536" strokeWidth="2" strokeLinejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z" /></svg>
+                    {post.comments.length}
+                  </button>
+                  <span className="ml-auto text-sm text-[#56616D]">{post.timestamp}</span>
+                </div>
+
+                {post.comments.length > 0 && (
+                  <div className="mt-5 rounded-2xl border-[2px] border-[#182536] bg-[#EAF5EE] p-4 shadow-[4px_4px_0_#1B8243]">
+                    {post.comments.slice(-1).map((comment) => (
+                      <div key={comment.id} className="flex items-start gap-3">
+                        <span className="flex h-10 w-10 items-center justify-center rounded-full border-[2px] border-[#182536] bg-[#1B8243] text-xs font-extrabold text-white">
+                          {comment.authorName.split(' ').map((part) => part[0]).slice(0, 2).join('').toUpperCase()}
+                        </span>
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between gap-2">
+                            <strong className="text-base font-bold text-[#182536]">{comment.authorName}</strong>
+                            <span className="text-xs text-[#56616D]">{comment.timestamp}</span>
+                          </div>
+                          <p className="mt-1 text-base leading-6 text-[#182536]">{comment.text}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <form
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    const form = event.currentTarget as HTMLFormElement;
+                    const input = form.querySelector('input') as HTMLInputElement | null;
+                    if (!input || !input.value.trim()) return;
+                    onAddComment(post.id, input.value);
+                    input.value = '';
+                  }}
+                  className="mt-5 flex flex-wrap gap-3"
+                >
+                  <input aria-label={`Responder como ${currentUser.name}`} placeholder="Responder como Arthur" className="min-w-[200px] flex-1 rounded-xl border-[2px] border-[#8A96A3] bg-[#FAF7F2] px-4 py-3 text-base text-[#182536] placeholder:text-[#56616D] focus:outline-none" />
+                  <button type="submit" className="capy-cta px-5 py-3 text-sm font-bold text-white shadow-[4px_4px_0_#FEA402]">
+                    Enviar
+                  </button>
+                </form>
+              </article>
+            ))}
           </div>
 
-          <div className="bg-white border border-[#DDE2E6] rounded-2xl p-5">
-            <h3 className="text-sm font-bold text-[#1E3C61]">Próximos eventos</h3>
-            <div className="mt-4 space-y-3">
-              {events.slice(0, 3).map((event) => (
-                <div key={event.id} className="rounded-xl bg-[#FAF7F2] border border-[#DDE2E6] p-3">
-                  <p className="text-sm font-semibold text-[#182536]">{event.title}</p>
-                  <p className="text-[11px] text-gray-500 mt-1">{event.date} • {event.city}</p>
-                </div>
-              ))}
+          <aside className="w-full max-w-[380px] space-y-6">
+            <div className="rounded-[24px] border-[2px] border-[#182536] bg-[#FFF4D6] p-6 shadow-[8px_8px_0_#FEA402]">
+              <h2 className="text-2xl font-extrabold leading-tight text-[#1E3C61]">Projetos em destaque</h2>
+              <div className="mt-5 space-y-3">
+                {projects.slice(0, 3).map((project) => (
+                  <a key={project.id} href={`/projeto/${project.id}`} className="flex items-center gap-3 rounded-2xl border-[2px] border-[#182536] bg-white p-3 text-[#182536] shadow-[3px_3px_0_#182536] transition hover:-translate-y-0.5 hover:shadow-[5px_5px_0_#182536]">
+                    <span className="flex h-14 w-14 items-center justify-center rounded-xl border-[2px] border-[#182536] bg-[#1E3C61] text-[#FAF7F2]">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3 3 7 3s7-1.3 7-3v-6"/></svg>
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <strong className="block truncate text-base font-bold">{project.title}</strong>
+                      <span className="text-sm text-[#56616D]">{project.area}</span>
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
-        </aside>
-      </div>
+
+            <div className="rounded-[24px] border-[2px] border-[#182536] bg-white p-6 shadow-[8px_8px_0_#1E3C61]">
+              <h2 className="text-2xl font-extrabold leading-tight text-[#1E3C61]">Próximos eventos</h2>
+              <div className="mt-5 space-y-3">
+                {events.slice(0, 3).map((event) => (
+                  <div key={event.id} className="rounded-2xl border-[2px] border-[#182536] bg-[#FAF7F2] p-3">
+                    <p className="text-base font-bold text-[#182536]">{event.title}</p>
+                    <p className="mt-1 text-sm text-[#56616D]">{event.date} • {event.city}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </aside>
+        </div>
+      </main>
     </div>
   );
 }
@@ -402,51 +473,101 @@ function ProjectDetailPage({ projects, users, favoritedProjectIds, onToggleFavor
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-8 space-y-8">
-      <nav className="flex items-center gap-2 text-xs text-gray-500">
-        <Link to="/projetos" className="text-[#1E3C61] hover:underline font-medium">Projetos</Link>
-        <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
-        <span className="text-gray-600 truncate max-w-md">{project.title}</span>
-      </nav>
+    <div className="bg-[#FAF7F2]">
+      <section className="capy-hero-shell border-b-[2px] border-[#182536] text-[#FAF7F2]">
+        <div className="mx-auto max-w-6xl px-6 pt-6 pb-10 md:pt-8 md:pb-16">
+          <nav aria-label="Trilha" className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#DCE5EE]">
+            <Link to="/projetos" className="font-semibold text-[#FFD98A] hover:underline">Projetos</Link>
+            <span aria-hidden="true">/</span>
+            <span className="truncate max-w-xl text-[#FAF7F2]">{project.title}</span>
+          </nav>
 
-      <div className="grid grid-cols-1 xl:grid-cols-[1.4fr_0.6fr] gap-8">
-        <div className="space-y-6">
-          <div className="rounded-3xl overflow-hidden border border-[#DDE2E6] bg-white p-3">
-            <img src={project.media || ''} alt={project.title} className="w-full h-80 object-cover rounded-2xl" />
-          </div>
-
-          <div className="bg-white border border-[#DDE2E6] rounded-2xl p-5">
-            <div className="flex flex-wrap gap-2 border-b border-[#DDE2E6] pb-3">
-              {tabs.map((tab) => (
-                <button
-                  key={tab}
-                  type="button"
-                  onClick={() => setActiveTab(tab)}
-                  className={`px-3 py-2 text-xs font-semibold rounded-full ${activeTab === tab ? 'bg-[#1E3C61] text-white' : 'bg-[#FAF7F2] text-gray-600 border border-[#DDE2E6]'}`}
-                >
-                  {tab}
-                </button>
-              ))}
+          <div className="flex flex-wrap gap-8 md:gap-10 items-start">
+            <div className="relative h-[260px] w-[260px] flex-none overflow-hidden rounded-[24px] border-[2px] solid border-[#FAF7F2] bg-[#1B8243] shadow-[8px_8px_0_#FEA402]" aria-label={project.title}>
+              <svg viewBox="0 0 260 260" className="absolute inset-0 h-full w-full opacity-60" fill="none" stroke="#EAF5EE" strokeWidth="2" aria-hidden="true">
+                <ellipse cx="140" cy="140" rx="30" ry="22" />
+                <ellipse cx="140" cy="140" rx="70" ry="48" />
+                <ellipse cx="138" cy="142" rx="115" ry="88" />
+                <ellipse cx="135" cy="145" rx="160" ry="118" />
+              </svg>
+              <span className="absolute left-5 top-5 flex h-16 w-16 items-center justify-center rounded-2xl border-[2px] border-[#182536] bg-[#FEA402] text-[#182536]">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3 3 7 3s7-1.3 7-3v-6"/></svg>
+              </span>
             </div>
 
-            <div className="mt-5 text-sm text-gray-700 leading-7">
+            <div className="min-w-0 flex-1">
+              <div className="mb-4 flex flex-wrap items-center gap-3">
+                <span className="rounded-full border-[2px] border-[#FAF7F2] bg-[#EAF0F5] px-3 py-1 text-xs font-bold text-[#1E3C61]">{project.area}</span>
+                <span className="flex items-center gap-2 rounded-full border-[2px] border-[#FAF7F2] bg-[#FFF4D6] px-3 py-1 text-xs font-bold text-[#182536]">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#1B8243]" aria-hidden="true" />
+                  {project.status}
+                </span>
+                <span className="ml-auto text-sm text-[#DCE5EE]">{project.date}</span>
+              </div>
+
+              <h1 className="max-w-3xl text-4xl font-extrabold leading-[0.95] tracking-[-0.04em] text-white md:text-5xl">{project.title}</h1>
+
+              <div className="mt-5 flex flex-col gap-1">
+                <strong className="text-xl font-bold text-[#FAF7F2]">{authors.map((author) => author.name).join(', ') || 'Equipe acadêmica'}</strong>
+                <span className="text-base text-[#DCE5EE]">{project.institution}</span>
+              </div>
+
+              <p className="mt-5 max-w-3xl text-lg leading-8 text-[#EEF2F6]">{project.summary}</p>
+
+              <div className="mt-5 flex flex-wrap items-center gap-2">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="rounded-full bg-[#FAF7F2] px-3 py-1.5 text-sm font-semibold text-[#182536]">{tag}</span>
+                ))}
+                <button type="button" onClick={() => onToggleFavorite(project.id)} className="ml-auto rounded-xl border-[2px] border-[#182536] bg-[#FEA402] px-5 py-3 text-sm font-bold text-[#182536] shadow-[4px_4px_0_#FAF7F2] transition hover:-translate-y-0.5">
+                  {favoritedProjectIds.includes(project.id) ? 'Salvo' : 'Favoritar'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <main className="mx-auto max-w-6xl px-6 pb-16 pt-8 md:pt-10">
+        <div className="flex flex-wrap gap-4 border-b-[2px] border-[#182536]" role="tablist" aria-label="Seções do projeto">
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              type="button"
+              role="tab"
+              aria-selected={activeTab === tab}
+              onClick={() => setActiveTab(tab)}
+              className={`rounded-t-xl border-[2px] border-[#182536] px-5 py-3 text-sm font-bold transition ${activeTab === tab ? 'border-b-transparent bg-white text-[#182536]' : 'border-transparent bg-[#FAF7F2] text-[#56616D] hover:bg-[#EAF0F5]'}`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-10">
+          <div className="min-w-0 flex-1">
+            <div className="rounded-[24px] border-[2px] border-[#182536] bg-white p-6 shadow-[8px_8px_0_#1E3C61]">
               {activeTab === 'Visão geral' && (
                 <>
-                  <p>{project.summary}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="bg-[#FAF7F2] border border-[#DDE2E6] px-2 py-1 rounded-full text-[10px] text-gray-600">{tag}</span>
-                    ))}
-                  </div>
+                  <h2 className="text-3xl font-extrabold tracking-[-0.03em] text-[#1E3C61]">Resumo</h2>
+                  <p className="mt-4 text-lg leading-8 text-[#182536]">{project.summary}</p>
                 </>
               )}
-              {activeTab === 'Metodologia' && <p>{project.methodology}</p>}
-              {activeTab === 'Resultados' && <ul className="list-disc pl-5 space-y-2">{project.keyResults.map((item) => <li key={item}>{item}</li>)}</ul>}
+              {activeTab === 'Metodologia' && <p className="text-lg leading-8 text-[#182536]">{project.methodology}</p>}
+              {activeTab === 'Resultados' && (
+                <ul className="space-y-3">
+                  {project.keyResults.map((item) => (
+                    <li key={item} className="flex items-center gap-4 rounded-2xl border-[2px] border-[#182536] bg-[#EAF5EE] p-4 text-lg font-medium shadow-[4px_4px_0_#1B8243]">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full border-[2px] border-[#182536] bg-[#1B8243] text-sm font-bold text-white">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
               {activeTab === 'Arquivos' && (
-                <div className="space-y-2">
+                <div className="space-y-3">
                   {project.files.map((file) => (
-                    <div key={file.name} className="rounded-xl border border-[#DDE2E6] bg-[#FAF7F2] px-3 py-2">
-                      {file.name} <span className="text-gray-500">({file.size})</span>
+                    <div key={file.name} className="rounded-2xl border-[2px] border-[#182536] bg-[#FAF7F2] px-4 py-3 text-base font-medium text-[#182536]">
+                      {file.name} <span className="text-[#56616D]">({file.size})</span>
                     </div>
                   ))}
                 </div>
@@ -454,11 +575,11 @@ function ProjectDetailPage({ projects, users, favoritedProjectIds, onToggleFavor
               {activeTab === 'Autores' && (
                 <div className="space-y-3">
                   {authors.map((author) => (
-                    <div key={author.id} className="flex items-center gap-3 rounded-xl border border-[#DDE2E6] p-3 bg-[#FAF7F2]">
-                      <img src={author.avatar || ''} alt={author.name} className="w-10 h-10 rounded-full object-cover" />
+                    <div key={author.id} className="flex items-center gap-3 rounded-2xl border-[2px] border-[#182536] bg-[#FAF7F2] p-3">
+                      <img src={author.avatar || ''} alt={author.name} className="h-12 w-12 rounded-full border-[2px] border-[#182536] object-cover" />
                       <div>
-                        <p className="font-semibold text-[#182536]">{author.name}</p>
-                        <p className="text-xs text-gray-500">{author.focus}</p>
+                        <p className="text-lg font-bold text-[#182536]">{author.name}</p>
+                        <p className="text-sm text-[#56616D]">{author.focus}</p>
                       </div>
                     </div>
                   ))}
@@ -466,38 +587,31 @@ function ProjectDetailPage({ projects, users, favoritedProjectIds, onToggleFavor
               )}
             </div>
           </div>
-        </div>
 
-        <aside className="space-y-5">
-          <div className="bg-white border border-[#DDE2E6] rounded-2xl p-5">
-            <div className="flex items-center justify-between">
-              <p className="text-xs uppercase tracking-[0.18em] text-[#1E3C61] font-semibold">Projeto</p>
-              <button type="button" onClick={() => onToggleFavorite(project.id)} className="inline-flex items-center gap-2 text-xs font-medium text-[#1E3C61] cursor-pointer">
-                <CheckCircle2 className={`w-4 h-4 ${favoritedProjectIds.includes(project.id) ? 'fill-[#1E3C61] text-[#1E3C61]' : ''}`} />
-                {favoritedProjectIds.includes(project.id) ? 'Salvo' : 'Salvar'}
-              </button>
+          <aside className="w-full max-w-[360px]">
+            <div className="rounded-[24px] border-[2px] border-[#182536] bg-white p-5 shadow-[8px_8px_0_#FEA402]">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#1E3C61]">Projeto</p>
+              <h3 className="mt-4 text-3xl font-extrabold leading-tight text-[#182536]">{project.title}</h3>
+              <div className="mt-4 space-y-2 text-sm text-[#56616D]">
+                <p><span className="font-bold text-[#182536]">Tipo:</span> {project.type}</p>
+                <p><span className="font-bold text-[#182536]">Status:</span> {project.status}</p>
+                <p><span className="font-bold text-[#182536]">Período:</span> {project.period}</p>
+                <p><span className="font-bold text-[#182536]">Instituição:</span> {project.institution}</p>
+              </div>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="rounded-full border-[2px] border-[#182536] bg-[#FAF7F2] px-2.5 py-1 text-[11px] font-bold text-[#182536]">{tag}</span>
+                ))}
+              </div>
+              {project.url && (
+                <a href={project.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex w-full items-center justify-center rounded-xl border-[2px] border-[#182536] bg-[#1E3C61] px-4 py-3 text-sm font-bold text-white shadow-[4px_4px_0_#FEA402] transition hover:-translate-y-0.5">
+                  Abrir repositório
+                </a>
+              )}
             </div>
-            <h2 className="mt-4 text-2xl font-bold text-[#182536] leading-tight">{project.title}</h2>
-            <p className="mt-3 text-sm text-gray-600">{project.shortDescription}</p>
-            <div className="mt-4 space-y-2 text-xs text-gray-600">
-              <p><span className="font-semibold text-[#182536]">Instituição:</span> {project.institution}</p>
-              <p><span className="font-semibold text-[#182536]">Tipo:</span> {project.type}</p>
-              <p><span className="font-semibold text-[#182536]">Status:</span> {project.status}</p>
-              <p><span className="font-semibold text-[#182536]">Período:</span> {project.period}</p>
-            </div>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <span key={tag} className="rounded-full bg-[#FAF7F2] border border-[#DDE2E6] px-2 py-1 text-[10px] text-gray-600">{tag}</span>
-              ))}
-            </div>
-            {project.url && (
-              <a href={project.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex w-full justify-center rounded-lg bg-[#1E3C61] text-white px-4 py-2.5 text-sm font-semibold hover:bg-[#162D49]">
-                Abrir repositório
-              </a>
-            )}
-          </div>
-        </aside>
-      </div>
+          </aside>
+        </div>
+      </main>
     </div>
   );
 }
@@ -508,23 +622,29 @@ function EventsPage({ events, registeredEventIds, onToggleRegistration }: {
   onToggleRegistration: (eventId: string) => void;
 }) {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-8">
-      <div className="mb-6 flex items-center justify-between gap-4">
-        <div>
-          <p className="text-xs uppercase tracking-[0.18em] text-[#1E3C61] font-semibold">Eventos</p>
-          <h1 className="text-3xl font-bold text-[#182536] mt-2">Agenda acadêmica e oportunidades</h1>
+    <div className="min-h-screen bg-[#FAF7F2] text-[#182536]">
+      <section className="capy-hero-shell">
+        <div className="mx-auto max-w-[1280px] px-6 py-10 md:px-12 md:py-14">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#DCE5EE]">Eventos</p>
+              <h1 className="mt-2 text-4xl font-extrabold leading-tight tracking-[-0.04em] text-white md:text-5xl">Agenda acadêmica e oportunidades</h1>
+            </div>
+            <div className="flex items-center gap-2 rounded-full border-[2px] border-[#FAF7F2] bg-[#FAF7F2] px-3 py-2 text-sm font-semibold text-[#1E3C61] shadow-[4px_4px_0_#FEA402]">
+              <Search className="h-4 w-4" />
+              <span>{events.length} eventos</span>
+            </div>
+          </div>
         </div>
-        <div className="flex items-center gap-2 rounded-full border border-[#DDE2E6] bg-white px-3 py-2 text-sm text-gray-500">
-          <Search className="w-4 h-4" />
-          <span>{events.length} eventos</span>
-        </div>
-      </div>
+      </section>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {events.map((event) => (
-          <EventCard key={event.id} event={event} isRegistered={registeredEventIds.includes(event.id)} onToggleRegistration={() => onToggleRegistration(event.id)} />
-        ))}
-      </div>
+      <main className="mx-auto mt-10 max-w-[1280px] px-6 pb-16 pt-2 md:px-12">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {events.map((event) => (
+            <EventCard key={event.id} event={event} isRegistered={registeredEventIds.includes(event.id)} onToggleRegistration={() => onToggleRegistration(event.id)} />
+          ))}
+        </div>
+      </main>
     </div>
   );
 }
@@ -542,56 +662,72 @@ function EventDetailPage({ events, registeredEventIds, onToggleRegistration }: {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-8 space-y-8">
-      <nav className="flex items-center gap-2 text-xs text-gray-500">
-        <Link to="/eventos" className="text-[#1E3C61] hover:underline font-medium">Eventos</Link>
-        <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
-        <span className="text-gray-600 truncate max-w-md">{event.title}</span>
-      </nav>
+    <div className="min-h-screen bg-[#FAF7F2] text-[#182536]">
+      <section className="capy-hero-shell">
+        <div className="mx-auto max-w-[1280px] px-6 py-10 md:px-12 md:py-14">
+          <nav className="flex items-center gap-2 text-xs text-[#DCE5EE]">
+            <Link to="/eventos" className="font-medium text-[#DCE5EE] hover:underline">Eventos</Link>
+            <ChevronRight className="h-3.5 w-3.5 text-[#DCE5EE]/80" />
+            <span className="max-w-md truncate text-[#F1F4F7]">{event.title}</span>
+          </nav>
 
-      <div className="grid grid-cols-1 xl:grid-cols-[1.4fr_0.6fr] gap-8">
-        <div className="space-y-5">
-          <div className="rounded-3xl overflow-hidden border border-[#DDE2E6] bg-white p-3">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1400&auto=format&fit=crop&q=80" alt={event.title} className="w-full h-80 object-cover rounded-2xl" />
-          </div>
-
-          <div className="bg-white border border-[#DDE2E6] rounded-2xl p-5">
-            <h2 className="text-2xl font-bold text-[#182536]">{event.title}</h2>
-            <p className="mt-3 text-sm text-gray-600 leading-relaxed">{event.aboutText}</p>
-            <div className="mt-5 space-y-3">
-              {event.schedule.map((item) => (
-                <div key={`${event.id}-${item.time}-${item.title}`} className="rounded-xl border border-[#DDE2E6] bg-[#FAF7F2] p-3">
-                  <p className="text-xs font-semibold text-[#1E3C61]">{item.time}</p>
-                  <p className="mt-1 text-sm font-semibold text-[#182536]">{item.title}</p>
-                  <p className="text-xs text-gray-500">{item.speaker}</p>
-                </div>
-              ))}
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#DCE5EE]">Evento</p>
+              <h1 className="mt-2 text-4xl font-extrabold leading-tight tracking-[-0.04em] text-white md:text-5xl">{event.title}</h1>
             </div>
+            <span className="rounded-full border-[2px] border-[#FAF7F2] bg-[#FAF7F2] px-3 py-2 text-sm font-semibold text-[#1E3C61] shadow-[4px_4px_0_#FEA402]">
+              {event.status}
+            </span>
           </div>
         </div>
+      </section>
 
-        <aside className="space-y-5">
-          <div className="bg-white border border-[#DDE2E6] rounded-2xl p-5">
-            <p className="text-xs uppercase tracking-[0.18em] text-[#1E3C61] font-semibold">Evento</p>
-            <h3 className="mt-4 text-2xl font-bold text-[#182536]">{event.title}</h3>
-            <div className="mt-4 space-y-2 text-xs text-gray-600">
-              <p><span className="font-semibold text-[#182536]">Categoria:</span> {event.category}</p>
-              <p><span className="font-semibold text-[#182536]">Status:</span> {event.status}</p>
-              <p><span className="font-semibold text-[#182536]">Data:</span> {event.date}</p>
-              <p><span className="font-semibold text-[#182536]">Local:</span> {event.location}</p>
-              <p><span className="font-semibold text-[#182536]">Modalidade:</span> {event.modality}</p>
+      <main className="mx-auto mt-10 max-w-[1280px] px-6 pb-16 pt-2 md:px-12">
+        <div className="grid grid-cols-1 gap-8 xl:grid-cols-[1.4fr_0.6fr]">
+          <div className="space-y-5">
+            <div className="overflow-hidden rounded-[28px] border-[2px] border-[#182536] bg-white p-3 shadow-[8px_8px_0_#1B8243]">
+              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1400&auto=format&fit=crop&q=80" alt={event.title} className="h-80 w-full rounded-[22px] object-cover" />
             </div>
-            <button
-              type="button"
-              disabled={event.status !== 'Inscrições abertas'}
-              onClick={() => onToggleRegistration(event.id)}
-              className={`mt-5 w-full rounded-lg px-4 py-2.5 text-sm font-semibold ${event.status === 'Inscrições abertas' ? 'bg-[#1E3C61] text-white hover:bg-[#162D49] cursor-pointer' : 'bg-gray-200 text-gray-500 cursor-not-allowed'}`}
-            >
-              {registeredEventIds.includes(event.id) ? 'Inscrito' : 'Inscrever-se'}
-            </button>
+
+            <div className="rounded-[24px] border-[2px] border-[#182536] bg-white p-5 shadow-[8px_8px_0_#1E3C61]">
+              <h2 className="text-2xl font-extrabold text-[#1E3C61]">Sobre o evento</h2>
+              <p className="mt-3 text-sm leading-relaxed text-[#56616D]">{event.aboutText}</p>
+              <div className="mt-5 space-y-3">
+                {event.schedule.map((item) => (
+                  <div key={`${event.id}-${item.time}-${item.title}`} className="rounded-[18px] border-[2px] border-[#182536] bg-[#FAF7F2] p-3 shadow-[4px_4px_0_#FEA402]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[#1E3C61]">{item.time}</p>
+                    <p className="mt-1 text-sm font-semibold text-[#182536]">{item.title}</p>
+                    <p className="text-xs text-[#56616D]">{item.speaker}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </aside>
-      </div>
+
+          <aside className="space-y-5">
+            <div className="rounded-[24px] border-[2px] border-[#182536] bg-[#FEF4D7] p-5 shadow-[8px_8px_0_#FEA402]">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E3C61]">Resumo</p>
+              <h3 className="mt-4 text-2xl font-extrabold text-[#182536]">{event.title}</h3>
+              <div className="mt-4 space-y-2 text-xs text-[#56616D]">
+                <p><span className="font-semibold text-[#182536]">Categoria:</span> {event.category}</p>
+                <p><span className="font-semibold text-[#182536]">Status:</span> {event.status}</p>
+                <p><span className="font-semibold text-[#182536]">Data:</span> {event.date}</p>
+                <p><span className="font-semibold text-[#182536]">Local:</span> {event.location}</p>
+                <p><span className="font-semibold text-[#182536]">Modalidade:</span> {event.modality}</p>
+              </div>
+              <button
+                type="button"
+                disabled={event.status !== 'Inscrições abertas'}
+                onClick={() => onToggleRegistration(event.id)}
+                className={`mt-5 w-full rounded-xl border-[2px] border-[#182536] px-4 py-2.5 text-sm font-bold ${event.status === 'Inscrições abertas' ? 'bg-[#1E3C61] text-white shadow-[4px_4px_0_#FEA402] hover:bg-[#162D49] cursor-pointer' : 'bg-[#F3F4F6] text-gray-500 cursor-not-allowed shadow-[4px_4px_0_#DDE2E6]'}`}
+              >
+                {registeredEventIds.includes(event.id) ? 'Inscrito' : 'Inscrever-se'}
+              </button>
+            </div>
+          </aside>
+        </div>
+      </main>
     </div>
   );
 }
@@ -649,126 +785,139 @@ function ProfilePage({ currentUser, users, projects, connectedUserIds, onToggleC
   const featuredProject = projects.find((project) => project.id === profileUser.featuredProjectId) ?? visibleProjects[0];
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-8">
-      <div className="bg-white border border-[#DDE2E6] rounded-3xl p-6 md:p-8">
-        <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <img src={profileUser.avatar || ''} alt={profileUser.name} className="w-20 h-20 rounded-full object-cover border border-[#DDE2E6]" />
-            <div>
-              <h1 className="text-3xl font-bold text-[#182536]">{profileUser.name}</h1>
-              <p className="text-sm text-[#1E3C61] font-medium">{profileUser.focus}</p>
-              <p className="text-sm text-gray-500 mt-1">{profileUser.institution}</p>
+    <div className="min-h-screen bg-[#FAF7F2] text-[#182536]">
+      <section className="capy-hero-shell overflow-hidden">
+        <div className="mx-auto box-border max-w-[1344px] px-4 pb-16 pt-8 sm:px-6 md:px-12 md:pb-24 md:pt-16">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
+              <img src={profileUser.avatar || ''} alt={profileUser.name} className="h-[200px] w-[200px] rounded-[32px] border-[3px] border-[#FAF7F2] object-cover shadow-[10px_10px_0_#FEA402] sm:h-[240px] sm:w-[240px] md:h-[280px] md:w-[280px]" />
+              <div className="min-w-0">
+                <h1 className="m-0 text-[clamp(2.9rem,9vw,6.5rem)] font-extrabold leading-[0.9] tracking-[-0.045em] text-white md:text-[104px]">{profileUser.name.split(' ')[0]}</h1>
+                <p className="mt-2 text-base font-bold leading-[1.2] text-[#FFD98A] sm:text-[22px] md:text-[26px]">{profileUser.focus}</p>
+                <p className="mt-1 text-sm text-[#DCE5EE] sm:text-base md:text-lg">{profileUser.institution}</p>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-3 md:justify-end">
+              {isOwnProfile ? (
+                <button type="button" onClick={onOpenNewProject} className="inline-flex h-[52px] items-center gap-2 rounded-[14px] border-[2px] border-[#182536] bg-[#FEA402] px-4 text-[15px] font-bold text-[#182536] shadow-[4px_4px_0_#FAF7F2] transition hover:-translate-y-0.5 sm:px-5 sm:text-[17px]">
+                  <Plus className="h-5 w-5" /> Novo projeto
+                </button>
+              ) : (
+                <button type="button" onClick={() => onToggleConnect(profileUser.id)} className="inline-flex h-[52px] items-center rounded-[14px] border-[2px] border-[#FAF7F2] bg-transparent px-4 text-[15px] font-bold text-[#FAF7F2] shadow-[4px_4px_0_#FAF7F2] transition hover:-translate-y-0.5 sm:px-5 sm:text-[17px]">
+                  {connectedUserIds.includes(profileUser.id) ? 'Conectado' : 'Conectar'}
+                </button>
+              )}
+              <button type="button" className="inline-flex h-[52px] items-center gap-2 rounded-[14px] border-[2px] border-[#FAF7F2] bg-transparent px-4 text-[15px] font-bold text-[#FAF7F2] shadow-[4px_4px_0_#FAF7F2] transition hover:-translate-y-0.5 sm:px-5 sm:text-[17px]">
+                Compartilhar portfólio
+              </button>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-3">
-            {isOwnProfile ? (
-              <button type="button" onClick={onOpenNewProject} className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1E3C61] text-white text-sm font-semibold hover:bg-[#162D49] cursor-pointer">
-                <Plus className="w-4 h-4" /> Novo projeto
-              </button>
-            ) : (
-              <button type="button" onClick={() => onToggleConnect(profileUser.id)} className="px-4 py-2 rounded-lg border border-[#CBD3DA] bg-white text-[#1E3C61] text-sm font-semibold hover:bg-gray-50 cursor-pointer">
-                {connectedUserIds.includes(profileUser.id) ? 'Conectado' : 'Conectar'}
-              </button>
-            )}
+          <p className="mt-8 max-w-[62ch] text-base leading-[1.6] text-[#F1F4F7] sm:text-[18px] md:text-[20px]">{profileUser.bio || 'Estudante com foco em projetos práticos, inovação e desenvolvimento de soluções digitais com impacto profissional real.'}</p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            {profileUser.tags.slice(0, 6).map((tag) => (
+              <span key={tag} className="rounded-full border-[2px] border-[#FAF7F2] bg-transparent px-4 py-2 text-[15px] font-semibold text-[#FAF7F2]">{tag}</span>
+            ))}
           </div>
         </div>
+      </section>
 
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-600">
-          <div className="rounded-2xl bg-[#FAF7F2] border border-[#DDE2E6] p-4">
-            <p className="text-xs uppercase tracking-[0.16em] text-gray-500">Curso</p>
-            <p className="mt-2 font-semibold text-[#182536]">{profileUser.course}</p>
+      <main className="mx-auto -mt-14 max-w-[1344px] box-border px-4 pb-[88px] sm:px-6 md:px-12">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="rounded-[20px] border-[2px] border-[#182536] bg-white p-[18px_24px] shadow-[5px_5px_0_#1B8243]">
+            <span className="text-[15px] text-[#56616D]">Curso</span>
+            <strong className="mt-2 block text-[28px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#182536]">{profileUser.course}</strong>
           </div>
-          <div className="rounded-2xl bg-[#FAF7F2] border border-[#DDE2E6] p-4">
-            <p className="text-xs uppercase tracking-[0.16em] text-gray-500">Período</p>
-            <p className="mt-2 font-semibold text-[#182536]">{profileUser.period}</p>
+          <div className="rounded-[20px] border-[2px] border-[#182536] bg-white p-[18px_24px] shadow-[5px_5px_0_#FEA402]">
+            <span className="text-[15px] text-[#56616D]">Período</span>
+            <strong className="mt-2 block text-[28px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#182536]">{profileUser.period}</strong>
           </div>
-          <div className="rounded-2xl bg-[#FAF7F2] border border-[#DDE2E6] p-4">
-            <p className="text-xs uppercase tracking-[0.16em] text-gray-500">Conexões</p>
-            <p className="mt-2 font-semibold text-[#182536]">{profileUser.connections ?? 0}</p>
+          <div className="rounded-[20px] border-[2px] border-[#182536] bg-white p-[18px_24px] shadow-[5px_5px_0_#1E3C61]">
+            <span className="text-[15px] text-[#56616D]">Conexões</span>
+            <strong className="mt-2 block text-[28px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#182536]">{profileUser.connections ?? 0}</strong>
           </div>
         </div>
-
-        <div className="mt-6 text-sm text-gray-600 leading-relaxed">{profileUser.bio}</div>
 
         {profileUser.badges && profileUser.badges.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-8 flex flex-wrap gap-3">
             {profileUser.badges.map((badgeKey) => (
               <Badge key={badgeKey} type={badgeKey} />
             ))}
           </div>
         )}
-      </div>
 
-      <div className="mt-8 grid grid-cols-1 xl:grid-cols-[0.8fr_1.2fr] gap-8">
-        <div className="space-y-6">
-          <div className="bg-white border border-[#DDE2E6] rounded-2xl p-5">
-            <h3 className="text-sm font-bold text-[#1E3C61]">Especialidades</h3>
+        <div className="mt-10 grid grid-cols-1 gap-8 xl:grid-cols-[0.8fr_1.2fr]">
+          <div className="rounded-[24px] border-[2px] border-[#182536] bg-white p-5 shadow-[8px_8px_0_#1E3C61]">
+            <h3 className="text-2xl font-extrabold text-[#1E3C61]">Especialidades</h3>
             <div className="mt-4 flex flex-wrap gap-2">
               {profileUser.tags.map((tag) => (
-                <span key={tag} className="bg-[#FAF7F2] border border-[#DDE2E6] px-2 py-1 rounded-full text-[10px] text-gray-600">{tag}</span>
+                <span key={tag} className="rounded-full border-[2px] border-[#182536] bg-[#FAF7F2] px-3 py-1.5 text-xs font-bold text-[#182536]">{tag}</span>
               ))}
             </div>
           </div>
 
-          {featuredProject && (
-            <div className="bg-white border border-[#DDE2E6] rounded-2xl p-5">
-              <h3 className="text-sm font-bold text-[#1E3C61]">Projeto em destaque</h3>
-              <div className="mt-4 rounded-2xl overflow-hidden border border-[#DDE2E6]">
-                <img src={featuredProject.media || ''} alt={featuredProject.title} className="w-full h-40 object-cover" />
-              </div>
-              <p className="mt-3 text-sm font-semibold text-[#182536]">{featuredProject.title}</p>
-              <p className="mt-1 text-xs text-gray-500">{featuredProject.area}</p>
-              {isOwnProfile && (
-                <button type="button" onClick={() => onSetFeaturedProject(featuredProject.id)} className="mt-3 text-xs font-semibold text-[#1E3C61] hover:underline cursor-pointer">
-                  Atualizar destaque
-                </button>
-              )}
-            </div>
-          )}
-        </div>
-
-        <div className="bg-white border border-[#DDE2E6] rounded-2xl p-5">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-bold text-[#182536]">Outros projetos</h3>
-            {isOwnProfile && visibleProjects.length > 0 && (
-              <button type="button" onClick={onOpenNewProject} className="text-xs font-semibold text-[#1E3C61] hover:underline cursor-pointer">Adicionar projeto</button>
-            )}
-          </div>
-
-          {visibleProjects.length === 0 ? (
-            <div className="mt-8 rounded-2xl border border-dashed border-[#DDE2E6] bg-[#FAF7F2] p-8 text-center">
-              <p className="text-sm text-gray-600">Você ainda não publicou nenhum projeto.</p>
-              {isOwnProfile && (
-                <button type="button" onClick={onOpenNewProject} className="mt-4 px-4 py-2 rounded-lg bg-[#1E3C61] text-white text-sm font-semibold hover:bg-[#162D49] cursor-pointer">
-                  Criar meu primeiro projeto
-                </button>
-              )}
-            </div>
-          ) : (
-            <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
-              {visibleProjects.map((project) => (
-                <div key={project.id} className="rounded-2xl border border-[#DDE2E6] bg-[#FAF7F2] p-4">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#1E3C61]">{project.status}</span>
-                    {profileUser.featuredProjectId === project.id && <span className="text-[10px] font-semibold text-[#1B8243]">Destaque</span>}
-                  </div>
-                  <p className="mt-3 text-sm font-semibold text-[#182536]">{project.title}</p>
-                  <p className="mt-1 text-[11px] text-gray-500">{project.area}</p>
-                  <div className="mt-4 flex gap-2">
-                    <Link to={`/projeto/${project.id}`} className="flex-1 rounded-lg bg-[#1E3C61] text-white px-3 py-2 text-xs font-semibold text-center hover:bg-[#162D49]">Abrir</Link>
-                    {isOwnProfile && (
-                      <button type="button" onClick={() => onSetFeaturedProject(project.id)} className="rounded-lg border border-[#CBD3DA] bg-white px-3 py-2 text-xs font-semibold text-[#1E3C61] hover:bg-gray-50 cursor-pointer">
-                        Destaque
-                      </button>
-                    )}
-                  </div>
+          <div className="space-y-6">
+            {featuredProject && (
+              <div className="rounded-[24px] border-[2px] border-[#182536] bg-[#FEF4D7] p-5 shadow-[8px_8px_0_#FEA402]">
+                <h3 className="text-2xl font-extrabold text-[#1E3C61]">Projeto em destaque</h3>
+                <div className="mt-4 overflow-hidden rounded-[18px] border-[2px] border-[#182536] bg-white">
+                  <img src={featuredProject.media || ''} alt={featuredProject.title} className="h-40 w-full object-cover" />
                 </div>
-              ))}
+                <p className="mt-3 text-lg font-bold text-[#182536]">{featuredProject.title}</p>
+                <p className="text-sm text-[#56616D]">{featuredProject.area}</p>
+                {isOwnProfile && (
+                  <button type="button" onClick={() => onSetFeaturedProject(featuredProject.id)} className="mt-3 text-sm font-bold text-[#1E3C61] hover:underline">
+                    Atualizar destaque
+                  </button>
+                )}
+              </div>
+            )}
+
+            <div className="rounded-[24px] border-[2px] border-[#182536] bg-white p-5 shadow-[8px_8px_0_#1B8243]">
+              <div className="flex items-center justify-between gap-3">
+                <h3 className="text-2xl font-extrabold text-[#182536]">Outros projetos</h3>
+                {isOwnProfile && visibleProjects.length > 0 && (
+                  <button type="button" onClick={onOpenNewProject} className="text-sm font-bold text-[#1E3C61] hover:underline">Adicionar projeto</button>
+                )}
+              </div>
+
+              {visibleProjects.length === 0 ? (
+                <div className="mt-8 rounded-[20px] border-[2px] border-dashed border-[#DDE2E6] bg-[#FAF7F2] p-8 text-center">
+                  <p className="text-base text-[#56616D]">Você ainda não publicou nenhum projeto.</p>
+                  {isOwnProfile && (
+                    <button type="button" onClick={onOpenNewProject} className="capy-cta mt-5 px-5 py-3 text-sm font-bold text-[#182536]">
+                      Criar meu primeiro projeto
+                    </button>
+                  )}
+                </div>
+              ) : (
+                <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+                  {visibleProjects.map((project) => (
+                    <div key={project.id} className="rounded-[20px] border-[2px] border-[#182536] bg-[#FAF7F2] p-4">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#1E3C61]">{project.status}</span>
+                        {profileUser.featuredProjectId === project.id && <span className="text-[10px] font-bold text-[#1B8243]">Destaque</span>}
+                      </div>
+                      <p className="mt-3 text-lg font-bold text-[#182536]">{project.title}</p>
+                      <p className="mt-1 text-xs text-[#56616D]">{project.area}</p>
+                      <div className="mt-4 flex gap-2">
+                        <Link to={`/projeto/${project.id}`} className="flex-1 rounded-xl border-[2px] border-[#182536] bg-[#1E3C61] px-3 py-2 text-center text-xs font-bold text-white">Abrir</Link>
+                        {isOwnProfile && (
+                          <button type="button" onClick={() => onSetFeaturedProject(project.id)} className="rounded-xl border-[2px] border-[#182536] bg-white px-3 py-2 text-xs font-bold text-[#1E3C61]">
+                            Destaque
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

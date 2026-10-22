@@ -33,27 +33,27 @@ export function LoginPage({ onLogin }: { onLogin: (email: string, password: stri
   };
 
   return (
-    <div className="min-h-[calc(100vh-44px)] bg-[#FAF7F2] flex flex-col justify-between relative overflow-hidden">
-      <div className="pointer-events-none select-none absolute -bottom-24 -left-24 w-[520px] h-[240px] rounded-[100%] bg-[#E8F5ED]/75" aria-hidden="true" />
+    <div className="capy-hero-shell min-h-[calc(100vh-44px)] flex flex-col justify-between relative overflow-hidden">
+      <div className="pointer-events-none select-none absolute -bottom-20 -left-12 w-[440px] h-[220px] rounded-full bg-[#1B8243]/10 blur-2xl" aria-hidden="true" />
+      <div className="capy-dot-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
       <div className="max-w-6xl w-full mx-auto px-6 py-10 md:py-14 relative z-10">
         <div className="mb-10"><CapyWordmark showMascot size="lg" /></div>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-7 space-y-8 pr-0 lg:pr-10">
             <div className="space-y-4">
-              <h1 className="text-3xl sm:text-5xl font-bold tracking-tight leading-[1.15] text-[#1E3C61]">Conecte-se ao<br /><span className="text-[#1B8243]">universo acadêmico.</span></h1>
-              <p className="text-base text-gray-600 leading-relaxed max-w-md">Explore projetos, publique suas pesquisas e faça parte de uma comunidade que valoriza o conhecimento.</p>
+              <h1 className="text-3xl sm:text-5xl font-bold tracking-tight leading-[1.05] text-[#1E3C61]">Conecte-se ao<br /><span className="text-[#1B8243]">universo acadêmico.</span></h1>
+              <p className="text-base text-[#56616D] leading-relaxed max-w-md">Explore projetos, publique suas pesquisas e faça parte de uma comunidade que valoriza o conhecimento.</p>
             </div>
             <div className="space-y-5 pt-1">
-              <div className="flex items-start gap-4"><div className="w-10 h-10 rounded-full bg-white border border-[#DDE2E6] flex items-center justify-center text-[#1E3C61] shrink-0"><Search className="w-4 h-4" /></div><div><h3 className="text-sm font-bold text-[#1E3C61]">Descubra</h3><p className="text-sm text-gray-500">Projetos de diversas áreas e instituições.</p></div></div>
-              <div className="flex items-start gap-4"><div className="w-10 h-10 rounded-full bg-white border border-[#DDE2E6] flex items-center justify-center text-[#1E3C61] shrink-0"><Share2 className="w-4 h-4" /></div><div><h3 className="text-sm font-bold text-[#1E3C61]">Compartilhe</h3><p className="text-sm text-gray-500">Seus trabalhos e conquistas acadêmicas.</p></div></div>
-              <div className="flex items-start gap-4"><div className="w-10 h-10 rounded-full bg-white border border-[#DDE2E6] flex items-center justify-center text-[#1E3C61] shrink-0"><MessageSquare className="w-4 h-4" /></div><div><h3 className="text-sm font-bold text-[#1E3C61]">Conecte-se</h3><p className="text-sm text-gray-500">Com pesquisadores, estudantes e instituições.</p></div></div>
+              <div className="flex items-start gap-4"><div className="w-11 h-11 rounded-full bg-[#FAF7F2] border-[2px] border-[#182536] shadow-[4px_4px_0_#FEA402] flex items-center justify-center text-[#1E3C61] shrink-0"><Search className="w-4 h-4" /></div><div><h3 className="text-sm font-bold text-[#1E3C61]">Descubra</h3><p className="text-sm text-[#56616D]">Projetos de diversas áreas e instituições.</p></div></div>
+              <div className="flex items-start gap-4"><div className="w-11 h-11 rounded-full bg-[#FAF7F2] border-[2px] border-[#182536] shadow-[4px_4px_0_#1B8243] flex items-center justify-center text-[#1E3C61] shrink-0"><Share2 className="w-4 h-4" /></div><div><h3 className="text-sm font-bold text-[#1E3C61]">Compartilhe</h3><p className="text-sm text-[#56616D]">Seus trabalhos e conquistas acadêmicas.</p></div></div>
+              <div className="flex items-start gap-4"><div className="w-11 h-11 rounded-full bg-[#FAF7F2] border-[2px] border-[#182536] shadow-[4px_4px_0_#1E3C61] flex items-center justify-center text-[#1E3C61] shrink-0"><MessageSquare className="w-4 h-4" /></div><div><h3 className="text-sm font-bold text-[#1E3C61]">Conecte-se</h3><p className="text-sm text-[#56616D]">Com pesquisadores, estudantes e instituições.</p></div></div>
             </div>
             <CapyLoginIllustration />
           </div>
 
           <div className="lg:col-span-5">
-            <div className="bg-white border border-[#DDE2E6] rounded-2xl p-8 shadow-[0_2px_8px_rgba(0,0,0,0.03)]">
-              <div className="mb-6">
+            <div className="capy-panel p-8 bg-white">              <div className="mb-6">
                 <h2 className="text-2xl font-bold text-[#1E3C61]">Entrar na sua conta</h2>
                 <p className="text-sm text-gray-500 mt-1 leading-relaxed">Acesse com seu e-mail institucional ou crie uma nova conta.</p>
               </div>

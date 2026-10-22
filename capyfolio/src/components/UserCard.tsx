@@ -4,7 +4,7 @@ import type { User } from '../types';
 
 export function UserCard({ user, isConnected, onToggleConnect }: { user: User; isConnected?: boolean; onToggleConnect?: () => void }) {
   return (
-    <article className="bg-white border border-[#DDE2E6] rounded-2xl p-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+    <article className="capy-card p-5 bg-white">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-3 min-w-0">
           <img src={user.avatar} alt={user.name} className="w-12 h-12 rounded-full object-cover border border-[#DDE2E6]" />
@@ -13,7 +13,7 @@ export function UserCard({ user, isConnected, onToggleConnect }: { user: User; i
             <p className="text-xs text-gray-500 truncate">{user.focus}</p>
           </div>
         </div>
-        <button type="button" onClick={onToggleConnect} className={`text-xs font-semibold px-2.5 py-1.5 rounded-lg border ${isConnected ? 'bg-[#E8F5ED] text-[#1B8243] border-[#CDE8D7]' : 'bg-white text-[#1E3C61] border-[#CBD3DA] hover:bg-gray-50'} cursor-pointer`}>
+        <button type="button" onClick={onToggleConnect} className={`text-xs font-semibold px-2.5 py-1.5 rounded-full border-[2px] border-[#182536] ${isConnected ? 'bg-[#E8F5ED] text-[#1B8243] shadow-[4px_4px_0_#1B8243]' : 'bg-white text-[#1E3C61] shadow-[4px_4px_0_#FEA402] hover:bg-[#FAF7F2]'} cursor-pointer`}>
           {isConnected ? 'Conectado' : 'Conectar'}
         </button>
       </div>

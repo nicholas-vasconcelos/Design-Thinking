@@ -1,3 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --navy: #1E3C61;
+  --navy-deep: #182536;
+  --green: #1B8243;
+  --gold: #FEA402;
+  --off-white: #FAF7F2;
+  --text: #182536;
+  --muted: #56616D;
+  --panel: #ffffff;
+  --line: #DDE2E6;
+  --dot-blue: rgba(30, 60, 97, 0.52);
+  --shadow-navy: 8px 8px 0 #1E3C61;
+  --shadow-green: 8px 8px 0 #1B8243;
+  --shadow-gold: 8px 8px 0 #FEA402;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  max-width: 100%;
+  overflow-x: hidden;
+  background: #FAF7F2;
+  color: var(--text);
+  font-family: 'Instrument Sans', 'Segoe UI', sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif;
+  letter-spacing: -0.04em;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.capy-hero-shell {
+  background-color: #1E3C61;
+  background-image: radial-gradient(rgba(250, 247, 242, 0.13) 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
+  color: #FAF7F2;
+  border-bottom: 2px solid #182536;
+}
+
+.capy-dot-grid {
+  background-image: radial-gradient(var(--dot-blue) 1.6px, transparent 1.6px);
+  background-size: 18px 18px;
+}
+
+.capy-panel {
+  background: var(--panel);
+  border: 2px solid var(--navy-deep);
+  border-radius: 24px;
+  box-shadow: 8px 8px 0 var(--gold);
+}
+
+.capy-panel-green {
+  background: #EAF8EE;
+  border: 2px solid var(--navy-deep);
+  border-radius: 24px;
+  box-shadow: 8px 8px 0 var(--green);
+}
+
+.capy-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 2px solid var(--navy-deep);
+  background: var(--panel);
+  color: var(--text);
+  padding: 0.5rem 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.capy-chip:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--gold);
+}
+
+.capy-chip[data-active='true'] {
+  background: linear-gradient(180deg, rgba(254, 164, 2, 0.2), rgba(254, 164, 2, 0.08));
+  box-shadow: 4px 4px 0 var(--gold);
+}
+
+.capy-card {
+  background: var(--panel);
+  border: 2px solid var(--navy-deep);
+  border-radius: 22px;
+  box-shadow: 6px 6px 0 var(--green);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.capy-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--gold);
+}
+
+.capy-cta {
+  background: var(--navy);
+  color: white;
+  border: 2px solid var(--navy-deep);
+  border-radius: 16px;
+  box-shadow: 5px 5px 0 var(--gold);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.capy-cta:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--green);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
