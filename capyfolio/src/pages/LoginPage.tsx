@@ -33,61 +33,125 @@ export function LoginPage({ onLogin }: { onLogin: (email: string, password: stri
   };
 
   return (
-    <div className="capy-hero-shell min-h-[calc(100vh-44px)] flex flex-col justify-between relative overflow-hidden">
-      <div className="pointer-events-none select-none absolute -bottom-20 -left-12 w-[440px] h-[220px] rounded-full bg-[#1B8243]/10 blur-2xl" aria-hidden="true" />
-      <div className="capy-dot-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
-      <div className="max-w-6xl w-full mx-auto px-6 py-10 md:py-14 relative z-10">
-        <div className="mb-10"><CapyWordmark showMascot size="lg" /></div>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          <div className="lg:col-span-7 space-y-8 pr-0 lg:pr-10">
-            <div className="space-y-4">
-              <h1 className="text-3xl sm:text-5xl font-bold tracking-tight leading-[1.05] text-[#1E3C61]">Conecte-se ao<br /><span className="text-[#1B8243]">universo acadêmico.</span></h1>
-              <p className="text-base text-[#56616D] leading-relaxed max-w-md">Explore projetos, publique suas pesquisas e faça parte de uma comunidade que valoriza o conhecimento.</p>
-            </div>
-            <div className="space-y-5 pt-1">
-              <div className="flex items-start gap-4"><div className="w-11 h-11 rounded-full bg-[#FAF7F2] border-[2px] border-[#182536] shadow-[4px_4px_0_#FEA402] flex items-center justify-center text-[#1E3C61] shrink-0"><Search className="w-4 h-4" /></div><div><h3 className="text-sm font-bold text-[#1E3C61]">Descubra</h3><p className="text-sm text-[#56616D]">Projetos de diversas áreas e instituições.</p></div></div>
-              <div className="flex items-start gap-4"><div className="w-11 h-11 rounded-full bg-[#FAF7F2] border-[2px] border-[#182536] shadow-[4px_4px_0_#1B8243] flex items-center justify-center text-[#1E3C61] shrink-0"><Share2 className="w-4 h-4" /></div><div><h3 className="text-sm font-bold text-[#1E3C61]">Compartilhe</h3><p className="text-sm text-[#56616D]">Seus trabalhos e conquistas acadêmicas.</p></div></div>
-              <div className="flex items-start gap-4"><div className="w-11 h-11 rounded-full bg-[#FAF7F2] border-[2px] border-[#182536] shadow-[4px_4px_0_#1E3C61] flex items-center justify-center text-[#1E3C61] shrink-0"><MessageSquare className="w-4 h-4" /></div><div><h3 className="text-sm font-bold text-[#1E3C61]">Conecte-se</h3><p className="text-sm text-[#56616D]">Com pesquisadores, estudantes e instituições.</p></div></div>
-            </div>
-            <CapyLoginIllustration />
+    <div className="min-h-screen bg-[#FAF7F2] font-['Instrument_Sans',sans-serif] text-[#182536]">
+      <div className="flex min-h-[900px] flex-wrap bg-[#FAF7F2]">
+        <section className="relative flex min-w-0 flex-[1.1_1_560px] flex-col gap-10 overflow-hidden bg-[#1E3C61] bg-[radial-gradient(rgba(250,247,242,0.13)_1.5px,transparent_1.5px)] bg-[size:26px_26px] px-8 py-12 text-[#FAF7F2] sm:px-12 lg:px-16">
+          <div className="flex items-center gap-3">
+            <CapyWordmark showMascot size="lg" />
           </div>
 
-          <div className="lg:col-span-5">
-            <div className="capy-panel p-8 bg-white">              <div className="mb-6">
-                <h2 className="text-2xl font-bold text-[#1E3C61]">Entrar na sua conta</h2>
-                <p className="text-sm text-gray-500 mt-1 leading-relaxed">Acesse com seu e-mail institucional ou crie uma nova conta.</p>
+          <div className="flex w-full max-w-[690px] flex-col gap-6">
+            <h1 className="m-0 max-w-[600px] text-[clamp(3.25rem,5vw,5rem)] font-extrabold leading-[0.96] tracking-[-0.035em] text-white">
+              Conecte-se ao universo acadêmico.
+            </h1>
+            <p className="m-0 max-w-[460px] text-[19px] leading-[1.55] text-[#DCE5EE]">
+              Explore projetos, publique suas pesquisas e faça parte de uma comunidade que valoriza o conhecimento.
+            </p>
+          </div>
+
+          <div className="relative z-10 flex w-full max-w-[440px] flex-col gap-3.5">
+            <div className="flex items-center gap-4 rounded-[16px] border-[2px] border-[#182536] bg-[#FAF7F2] p-3 shadow-[4px_4px_0_#FEA402]">
+              <span className="flex h-11 w-11 flex-none items-center justify-center rounded-[12px] border-[2px] border-[#182536] bg-[#FFF4D6]">
+                <Search className="h-5 w-5 text-[#182536]" />
+              </span>
+              <div className="flex flex-col">
+                <strong className="font-bold text-[#182536]">Descubra</strong>
+                <span className="text-sm text-[#56616D]">Projetos de diversas áreas e instituições.</span>
               </div>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-xs font-semibold text-[#182536] mb-1.5">E-mail</label>
-                  <input type="email" required value={email} onChange={(event) => setEmail(event.target.value)} placeholder="seu@email.com" className="w-full bg-white border border-[#CBD3DA] rounded-lg px-3.5 py-2.5 text-sm text-[#182536] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1E3C61]/15 focus:border-[#1E3C61]" />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-[#182536] mb-1.5">Senha</label>
-                  <div className="relative">
-                    <input type={showPassword ? 'text' : 'password'} required value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Digite sua senha" className="w-full bg-white border border-[#CBD3DA] rounded-lg pl-3.5 pr-10 py-2.5 text-sm text-[#182536] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1E3C61]/15 focus:border-[#1E3C61]" />
-                    <button type="button" onClick={() => setShowPassword((current) => !current)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 cursor-pointer">{showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}</button>
-                  </div>
-                </div>
+            </div>
 
-                {error && <div className="text-xs font-medium text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">{error}</div>}
+            <div className="flex items-center gap-4 rounded-[16px] border-[2px] border-[#182536] bg-[#FAF7F2] p-3 shadow-[4px_4px_0_#1B8243]">
+              <span className="flex h-11 w-11 flex-none items-center justify-center rounded-[12px] border-[2px] border-[#182536] bg-[#EAF5EE]">
+                <Share2 className="h-5 w-5 text-[#182536]" />
+              </span>
+              <div className="flex flex-col">
+                <strong className="font-bold text-[#182536]">Compartilhe</strong>
+                <span className="text-sm text-[#56616D]">Seus trabalhos e conquistas acadêmicas.</span>
+              </div>
+            </div>
 
-                <div className="flex items-center justify-between text-xs pt-1">
-                  <label className="inline-flex items-center gap-2 text-gray-600 cursor-pointer"><input type="checkbox" className="w-3.5 h-3.5 rounded border-gray-300 accent-[#1E3C61]" /> <span>Lembrar de mim</span></label>
-                  <button type="button" onClick={handleUnavailable} className="text-[#1E3C61] font-medium hover:underline cursor-pointer">Esqueceu sua senha?</button>
-                </div>
-                <button type="submit" disabled={isSubmitting} className="w-full bg-[#1E3C61] hover:bg-[#162D49] text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition-colors cursor-pointer mt-2 disabled:opacity-70">{isSubmitting ? 'Entrando...' : 'Entrar'}</button>
-              </form>
-
-              <div className="relative my-5 flex items-center justify-center"><div className="border-t border-[#DDE2E6] w-full" /><span className="bg-white px-3 text-xs text-gray-400">ou</span><div className="border-t border-[#DDE2E6] w-full" /></div>
-              <button type="button" onClick={handleUnavailable} className="w-full bg-white hover:bg-gray-50 border border-[#CBD3DA] text-[#182536] font-medium py-2.5 px-4 rounded-lg text-sm flex items-center justify-center gap-2.5 transition-colors cursor-pointer">
-                <svg className="w-4 h-4" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.4 1 3.5 3.6 1.6 7.4l3.7 2.8C6.2 7.2 8.9 5 12 5z" /><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.6l3.7 2.9c2.2-2 3.7-5 3.7-8.7z" /><path fill="#FBBC05" d="M5.3 14.8c-.2-.8-.4-1.6-.4-2.5s.2-1.7.4-2.5L1.6 7C.6 9 0 11.2 0 13.5s.6 4.5 1.6 6.5l3.7-2.9z" /><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3.1 0-5.8-2.1-6.7-5L1.6 17c1.9 3.9 5.8 7 10.4 7z" /></svg>
-                <span>Entrar com Google</span>
-              </button>
-              <p className="text-center text-xs text-gray-500 mt-6">Não tem uma conta? <Link to="/cadastro" className="text-[#1E3C61] font-semibold hover:underline">Criar conta</Link></p>
+            <div className="flex items-center gap-4 rounded-[16px] border-[2px] border-[#182536] bg-[#FAF7F2] p-3 shadow-[4px_4px_0_#EAF0F5]">
+              <span className="flex h-11 w-11 flex-none items-center justify-center rounded-[12px] border-[2px] border-[#182536] bg-[#EAF0F5]">
+                <MessageSquare className="h-5 w-5 text-[#182536]" />
+              </span>
+              <div className="flex flex-col">
+                <strong className="font-bold text-[#182536]">Conecte-se</strong>
+                <span className="text-sm text-[#56616D]">Com pesquisadores, estudantes e instituições.</span>
+              </div>
             </div>
           </div>
-        </div>
+
+          <div className="pointer-events-none absolute bottom-10 right-6 z-20 flex h-[300px] w-[300px] items-end justify-center overflow-hidden rounded-full border-[2px] border-[#182536] bg-[#FAF7F2] shadow-[8px_8px_0_#FEA402]">
+            <div className="absolute inset-x-0 bottom-0 top-auto h-0 w-full" />
+            <CapyLoginIllustration compact />
+          </div>
+
+          <div className="absolute bottom-5 right-4 z-30 max-w-[210px] -rotate-[4deg] rounded-xl border-[2px] border-[#182536] bg-[#FEA402] px-4 py-2.5 text-[17px] font-bold leading-[1.2] text-[#182536] shadow-[4px_4px_0_#182536]">
+            Grandes ideias também nascem na universidade.
+          </div>
+        </section>
+
+        <section className="flex min-w-0 flex-[1_1_440px] items-center justify-center px-8 py-14 sm:px-8 lg:px-8">
+          <div className="w-full max-w-[460px] rounded-[24px] border-[2px] border-[#182536] bg-white p-10 shadow-[8px_8px_0_#1B8243]">
+            <div className="mb-6 flex flex-col gap-2">
+              <h2 className="m-0 text-[34px] font-extrabold leading-[1.05] tracking-[-0.025em] text-[#1E3C61]">Entrar na sua conta</h2>
+              <p className="m-0 text-[16px] leading-[1.5] text-[#56616D]">
+                Acesse com seu e-mail institucional ou crie uma nova conta.
+              </p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="flex flex-col gap-[18px]">
+              <div className="flex flex-col gap-2">
+                <label htmlFor="email" className="text-[15px] font-bold text-[#182536]">E-mail</label>
+                <input id="email" type="email" required value={email} onChange={(event) => setEmail(event.target.value)} placeholder="seu@email.com" className="h-[52px] w-full rounded-[12px] border-2 border-[#8A96A3] bg-white px-4 text-[16px] text-[#182536] outline-none placeholder:text-[#6B7682] focus:border-[#1E3C61] focus:shadow-[3px_3px_0_#FEA402]" />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="senha" className="text-[15px] font-bold text-[#182536]">Senha</label>
+                <div className="relative">
+                  <input id="senha" type={showPassword ? 'text' : 'password'} required value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Digite sua senha" className="h-[52px] w-full rounded-[12px] border-2 border-[#8A96A3] bg-white py-0 pl-4 pr-12 text-[16px] text-[#182536] outline-none placeholder:text-[#6B7682] focus:border-[#1E3C61] focus:shadow-[3px_3px_0_#FEA402]" />
+                  <button type="button" aria-label="Mostrar senha" onClick={() => setShowPassword((current) => !current)} className="absolute right-1 top-1 flex h-11 w-11 items-center justify-center rounded-lg bg-transparent text-[#56616D] hover:text-[#182536]">
+                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                  </button>
+                </div>
+              </div>
+
+              {error && <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs font-medium text-red-600">{error}</div>}
+
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <label className="flex min-h-[44px] items-center gap-2.5 text-[15px] text-[#182536]">
+                  <input type="checkbox" className="h-5 w-5 accent-[#1E3C61]" />
+                  Lembrar de mim
+                </label>
+                <button type="button" onClick={handleUnavailable} className="text-[15px] font-semibold text-[#1B8243] hover:underline">Esqueceu sua senha?</button>
+              </div>
+
+              <button type="submit" disabled={isSubmitting} className="h-[56px] rounded-[14px] border-[2px] border-[#182536] bg-[#1E3C61] text-[18px] font-bold text-white shadow-[4px_4px_0_#FEA402] transition-transform duration-150 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#FEA402] disabled:opacity-70">
+                {isSubmitting ? 'Entrando...' : 'Entrar'}
+              </button>
+            </form>
+
+            <div className="my-5 flex items-center gap-3 text-sm text-[#56616D]">
+              <span className="h-[2px] flex-1 bg-[#DDE2E6]" />
+              <span>ou</span>
+              <span className="h-[2px] flex-1 bg-[#DDE2E6]" />
+            </div>
+
+            <button type="button" onClick={handleUnavailable} className="flex h-[56px] w-full items-center justify-center gap-3 rounded-[14px] border-[2px] border-[#182536] bg-white text-[16px] font-semibold text-[#182536] shadow-[4px_4px_0_#182536] transition-transform duration-150 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#182536]">
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M22 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.6a4.8 4.8 0 01-2.1 3.1v2.6h3.4c2-1.8 3.1-4.5 3.1-7.5z"></path>
+                <path fill="#34A853" d="M12 22.5c2.8 0 5.2-.9 6.9-2.5l-3.4-2.6c-.9.6-2.1 1-3.5 1-2.7 0-5-1.8-5.8-4.3H2.7v2.7A10.5 10.5 0 0012 22.5z"></path>
+                <path fill="#FBBC05" d="M6.2 14.1a6.3 6.3 0 010-4.2V7.2H2.7a10.5 10.5 0 000 9.6z"></path>
+                <path fill="#EA4335" d="M12 5.7c1.5 0 2.8.5 3.8 1.5l2.9-2.9A10.5 10.5 0 002.7 7.2l3.5 2.7c.8-2.2 3.1-4 5.8-4z"></path>
+              </svg>
+              Entrar com Google
+            </button>
+
+            <p className="mt-6 text-center text-[15px] text-[#56616D]">
+              Não tem uma conta? <Link to="/cadastro" className="font-semibold text-[#1B8243] hover:underline">Criar conta</Link>
+            </p>
+          </div>
+        </section>
       </div>
     </div>
   );

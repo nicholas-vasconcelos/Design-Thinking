@@ -849,11 +849,17 @@ function ProfilePage({ currentUser, users, projects, connectedUserIds, onToggleC
         )}
 
         <div className="mt-10 grid grid-cols-1 gap-8 xl:grid-cols-[0.8fr_1.2fr]">
-          <div className="rounded-[24px] border-[2px] border-[#182536] bg-white p-5 shadow-[8px_8px_0_#1E3C61]">
-            <h3 className="text-2xl font-extrabold text-[#1E3C61]">Especialidades</h3>
+          <div className="rounded-[24px] border-[2px] border-[#182536] bg-[#EAF0F5] p-5 shadow-[8px_8px_0_#1E3C61]">
+            <div className="flex items-center justify-between gap-3">
+              <h3 className="text-2xl font-extrabold text-[#1E3C61]">Especialidades</h3>
+              <span className="rounded-full border-[2px] border-[#1E3C61] bg-[#FAF7F2] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#1E3C61]">Perfil</span>
+            </div>
+            <p className="mt-3 text-sm leading-6 text-[#3A4654]">
+              Áreas de atuação e principais competências acadêmicas do perfil profissional.
+            </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {profileUser.tags.map((tag) => (
-                <span key={tag} className="rounded-full border-[2px] border-[#182536] bg-[#FAF7F2] px-3 py-1.5 text-xs font-bold text-[#182536]">{tag}</span>
+                <span key={tag} className="rounded-full border-[2px] border-[#1E3C61] bg-white px-3 py-1.5 text-xs font-bold text-[#1E3C61]">{tag}</span>
               ))}
             </div>
           </div>
